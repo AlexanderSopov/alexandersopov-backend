@@ -1,0 +1,28 @@
+nginx:
+    build: ./nginx
+    links:
+        - api1:api1
+        - api2:api2
+        - api3:api3
+    ports:
+        - "80:80"
+api1:
+    build: ./api
+    links:
+        - mongo:mongo
+    ports:
+        - "8080"
+api2:
+    build: ./api
+    links:
+        - mongo:mongo
+    ports:
+        - "8080"
+api3:
+    build: ./api
+    links:
+        - mongo:mongo
+    ports:
+        - "8080"
+mongo:
+    image: mongo
